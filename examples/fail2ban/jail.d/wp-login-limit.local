@@ -1,0 +1,16 @@
+# Example jail. Point logpath at the file PHP writes its error log to
+# (php.ini "error_log", or the PHP-FPM pool's php_admin_value[error_log]).
+#
+# Important behind a proxy or CDN: fail2ban bans the address in the log line,
+# which is the client IP the plugin resolved. Banning it with iptables on this
+# server only helps when clients connect directly; behind Cloudflare use a
+# Cloudflare action instead.
+
+[wp-login-limit]
+enabled  = true
+filter   = wp-login-limit
+logpath  = /var/log/php/error.log
+port     = http,https
+maxretry = 10
+findtime = 600
+bantime  = 3600

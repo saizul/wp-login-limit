@@ -1,0 +1,42 @@
+name: Bug report
+description: A lockout happens when it should not (or the other way round), the client IP is wrong, or the plugin does not work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Locked out? Run `wp login-limit unlock --all` or rename the plugin folder.
+        Do not post passwords, full IP addresses of real users or log files with personal data.
+        Ways to bypass the limits are security problems: use the private "Report a vulnerability" form instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you see? Which login path (wp-login.php, a plugin's login form, XML-RPC, REST application password)?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Set "Failed logins per IP" to ...
+        2. Log in with a wrong password from ...
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: proxy
+    attributes:
+      label: Proxy / CDN setup
+      description: Cloudflare, load balancer, nginx in front of Apache, none... and what the settings screen shows as "Your IP address as this plugin sees it" (mask the last part).
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: WordPress, PHP and plugin versions, object cache, single site or multisite.
+      placeholder: |
+        WordPress 7.0, PHP 8.3, Login Limit 0.1.0
+        Object cache: Redis
+    validations:
+      required: true
